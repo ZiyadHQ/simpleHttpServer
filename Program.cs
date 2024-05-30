@@ -1,4 +1,4 @@
-﻿
+﻿using Tool;
 public class Server
 {
 
@@ -6,7 +6,7 @@ public class Server
 	{
 
 		Console.WriteLine("hello world!!");
-
+		String st = fileLoader.pathToDirectory;
 	}
 
 }
