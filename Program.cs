@@ -1,6 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+public class Server
+{
 
-for(int i=0; i<100; i++){
-	Console.WriteLine("i: " + i);
+	public static void Main(String[] args)
+	{
+
+		Console.WriteLine("hello world!!");
+
+	}
+
 }
