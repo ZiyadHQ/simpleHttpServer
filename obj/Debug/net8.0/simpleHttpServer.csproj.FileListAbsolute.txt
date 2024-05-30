@@ -1,0 +1,15 @@
+/root/simpleHttpServer/obj/Debug/net8.0/simpleHttpServer.GeneratedMSBuildEditorConfig.editorconfig
+/root/simpleHttpServer/obj/Debug/net8.0/simpleHttpServer.AssemblyInfoInputs.cache
+/root/simpleHttpServer/obj/Debug/net8.0/simpleHttpServer.AssemblyInfo.cs
+/root/simpleHttpServer/obj/Debug/net8.0/simpleHttpServer.csproj.CoreCompileInputs.cache
+/root/simpleHttpServer/obj/Debug/net8.0/simpleHttpServer.sourcelink.json
+/root/simpleHttpServer/bin/Debug/net8.0/simpleHttpServer
+/root/simpleHttpServer/bin/Debug/net8.0/simpleHttpServer.deps.json
+/root/simpleHttpServer/bin/Debug/net8.0/simpleHttpServer.runtimeconfig.json
+/root/simpleHttpServer/bin/Debug/net8.0/simpleHttpServer.dll
+/root/simpleHttpServer/bin/Debug/net8.0/simpleHttpServer.pdb
+/root/simpleHttpServer/obj/Debug/net8.0/simpleHttpServer.dll
+/root/simpleHttpServer/obj/Debug/net8.0/refint/simpleHttpServer.dll
+/root/simpleHttpServer/obj/Debug/net8.0/simpleHttpServer.pdb
+/root/simpleHttpServer/obj/Debug/net8.0/simpleHttpServer.genruntimeconfig.cache
+/root/simpleHttpServer/obj/Debug/net8.0/ref/simpleHttpServer.dll
