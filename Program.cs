@@ -1,4 +1,4 @@
-﻿using Tool;
+﻿using Tools;
 public class Server
 {
 
@@ -6,7 +6,12 @@ public class Server
 	{
 
 		Console.WriteLine("hello world!!");
-		String st = fileLoader.pathToDirectory;
+		String st = projectFileLoader.pathToDirectory;
+
+		Console.WriteLine(st);
+
+		Console.WriteLine(projectFileLoader.getTextFromFile("page/1.html"));
+
 	}
 
 }
