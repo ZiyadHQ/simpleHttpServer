@@ -26,9 +26,10 @@ public class Server
 		var request = context.Request;
 		var response = context.Response;
 		
-		if(request.HttpMethod=="GET" && request.Url.AbsolutePath.ToString().Contains("page"))
+		if(request.HttpMethod == "GET" && request.Url.AbsolutePath.ToString().Contains("page"))
 		{
-			String htmlText = projectFileLoader.getTextFromFile(request.Url.AbsolutePath + ".html");
+			String htmlText = projectFileLoader.getTextFromFile(request.Url.AbsolutePath.Substring(1) + ".html");
+
 			sendString(htmlText, response);
 			
 		}
@@ -38,20 +39,32 @@ public class Server
 			Console.WriteLine("my home has destroyed");
 		}
 	}
-	public static void Main(String[] args)
+
+	public static async Task Main(String[] args)
 	{
 
-		HttpListener listener = new HttpListener();
-        listener.Prefixes.Add("http://127.0.0.1:5000/");
+		string html = projectFileLoader.getTextFromFile("page/1.html");
+
+		string[] str = Formatter.getFormat(html);
+
+		foreach(string s in str)
+		{
+			Console.WriteLine(s);
+		}
+
+		/*HttpListener listener = new HttpListener();
+        //listener.Prefixes.Add("http://127.0.0.1:5000/");
+		listener.Prefixes.Add("http://127.0.0.1:5000/");
         listener.Start();
 		Console.WriteLine("I am sleepy");
 		Console.WriteLine("I am on : http://127.0.0.1:5000/page/1");
 
+
 		while(true)
 		{
 			HttpListenerContext context = listener.GetContext();
-			handleRequest(context);
-		}
+			await handleRequest(context);
+		}*/
 	}
 	
 
