@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("simpleHttpServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9557e14da5c888db46aea0f229b282f6d5f003a5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e855e204edef5c3689dde3f4eb2449e928a090c6")]
 [assembly: System.Reflection.AssemblyProductAttribute("simpleHttpServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("simpleHttpServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
