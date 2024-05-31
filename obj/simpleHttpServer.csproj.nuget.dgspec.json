@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\simpleHttpServer\\simpleHttpServer.csproj": {}
+    "C:\\Users\\d7oom\\desktop\\simpleHttpServer\\simpleHttpServer.csproj": {}
   },
   "projects": {
-    "D:\\simpleHttpServer\\simpleHttpServer.csproj": {
+    "C:\\Users\\d7oom\\desktop\\simpleHttpServer\\simpleHttpServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\simpleHttpServer\\simpleHttpServer.csproj",
+        "projectUniqueName": "C:\\Users\\d7oom\\desktop\\simpleHttpServer\\simpleHttpServer.csproj",
         "projectName": "simpleHttpServer",
-        "projectPath": "D:\\simpleHttpServer\\simpleHttpServer.csproj",
-        "packagesPath": "C:\\Users\\zxzx-\\.nuget\\packages\\",
-        "outputPath": "D:\\simpleHttpServer\\obj\\",
+        "projectPath": "C:\\Users\\d7oom\\desktop\\simpleHttpServer\\simpleHttpServer.csproj",
+        "packagesPath": "C:\\Users\\d7oom\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\d7oom\\desktop\\simpleHttpServer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\zxzx-\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\d7oom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

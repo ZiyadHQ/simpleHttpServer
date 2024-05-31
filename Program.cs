@@ -12,21 +12,47 @@ using System.Text;
 using System.Threading;
 public class Server
 {
+	static async void sendString(String input, HttpListenerResponse response)
+	{
+		byte[] buffer = Encoding.UTF8.GetBytes(input);
+		response.ContentLength64 = buffer.Length;
+		var output = response.OutputStream;
+		await output.WriteAsync(buffer, 0, buffer.Length);
+		response.Close();
+	}
 
+	static async Task handleRequest(HttpListenerContext context)
+	{
+		var request = context.Request;
+		var response = context.Response;
+		
+		if(request.HttpMethod=="GET" && request.Url.AbsolutePath.ToString().Contains("page"))
+		{
+			String htmlText = projectFileLoader.getTextFromFile(request.Url.AbsolutePath + ".html");
+			sendString(htmlText, response);
+			
+		}
+		else
+		{
+			sendString("<html><body> Go home yankee </body></html>", response);
+			Console.WriteLine("my home has destroyed");
+		}
+	}
 	public static void Main(String[] args)
 	{
 
 		HttpListener listener = new HttpListener();
-        listener.Prefixes.Add("http://*:80/");
+        listener.Prefixes.Add("http://127.0.0.1:5000/");
         listener.Start();
+		Console.WriteLine("I am sleepy");
+		Console.WriteLine("I am on : http://127.0.0.1:5000/page/1");
 
-		Console.WriteLine("hello world!!");
-		String st = projectFileLoader.pathToDirectory;
-
-		Console.WriteLine(st);
-
-		Console.WriteLine(projectFileLoader.getTextFromFile("page/1.html"));
-
+		while(true)
+		{
+			HttpListenerContext context = listener.GetContext();
+			handleRequest(context);
+		}
 	}
+	
 
 }
