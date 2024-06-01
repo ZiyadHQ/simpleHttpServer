@@ -10,6 +10,8 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using simpleHttpServer;
+using System.ComponentModel;
 public class Server
 {
 	static async void sendString(String input, HttpListenerResponse response)
@@ -52,6 +54,23 @@ public class Server
 			Console.WriteLine(s);
 		}
 
+		HTMLCache Cache = new HTMLCache(TimeSpan.FromMilliseconds(10000) , 100);
+
+		DateTime start = DateTime.Now;
+		for(int i=0; i<10000000; i++)
+		{
+			string page = (i%3 + 1).ToString();
+			//Console.WriteLine("page/" + page + ".html");
+			string HTML = Cache.getHTML("page/" + page + ".html");
+		}
+		Console.WriteLine(DateTime.Now - start);
+		start = DateTime.Now;
+		for(int i=0; i<10000; i++)
+		{
+			string page = (i%3 + 1).ToString();
+			string HTML = projectFileLoader.getTextFromFile("page/" + page + ".html");
+		}
+		Console.WriteLine(DateTime.Now - start);
 		/*HttpListener listener = new HttpListener();
         //listener.Prefixes.Add("http://127.0.0.1:5000/");
 		listener.Prefixes.Add("http://127.0.0.1:5000/");
