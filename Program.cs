@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading;
 using simpleHttpServer;
 using System.ComponentModel;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 public class Server
 {
 	static async void sendString(String input, HttpListenerResponse response)
@@ -55,22 +57,39 @@ public class Server
 		}
 
 		HTMLCache Cache = new HTMLCache(TimeSpan.FromMilliseconds(10000) , 100);
+		List<float> Y1 = new();
+		List<float> Y2 = new();
+		List<float> X = new();
+		int testSize = 467;
+		Stopwatch stopwatch = new();
+		for(int i=0; i<testSize; i++)
+		{
+			stopwatch.Start();
+			for(int j=0; j<i*10; j++)
+			{
+				string page = (i%3 + 1).ToString();
+				string HTML = Cache.getHTML("page/" + page + ".html");
+			}
+			Y1.Add(stopwatch.ElapsedMilliseconds);
+			X.Add(i*10);
+			stopwatch.Reset();
+		}
+		for(int i=0; i<testSize; i++)
+		{
+			stopwatch.Start();
+			for(int j=0; j<i*10; j++)
+			{
+				string page = (i%3 + 1).ToString();
+				string HTML = projectFileLoader.getTextFromFile("page/" + page + ".html");
+			}
+			Y2.Add(stopwatch.ElapsedMilliseconds);
+			stopwatch.Reset();
+		}
 
-		DateTime start = DateTime.Now;
-		for(int i=0; i<10000000; i++)
-		{
-			string page = (i%3 + 1).ToString();
-			//Console.WriteLine("page/" + page + ".html");
-			string HTML = Cache.getHTML("page/" + page + ".html");
-		}
-		Console.WriteLine(DateTime.Now - start);
-		start = DateTime.Now;
-		for(int i=0; i<10000; i++)
-		{
-			string page = (i%3 + 1).ToString();
-			string HTML = projectFileLoader.getTextFromFile("page/" + page + ".html");
-		}
-		Console.WriteLine(DateTime.Now - start);
+		PlotSuite.plotToFile(X.ToArray(), Y1.ToArray(), "Plot1.png");
+		PlotSuite.plotToFile(X.ToArray(), Y2.ToArray(), "Plot2.png");
+
+
 		/*HttpListener listener = new HttpListener();
         //listener.Prefixes.Add("http://127.0.0.1:5000/");
 		listener.Prefixes.Add("http://127.0.0.1:5000/");

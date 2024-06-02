@@ -136,14 +136,14 @@ public class ServerMetricsTracker
 
     }
 
-    public async Task IncrementRequestCount()
+    public long IncrementRequestCountAsync()
     {
-        await Task.Run(() => Interlocked.Increment(ref httpRequestsDone));
+        return Interlocked.Increment(ref httpRequestsDone);
     }
 
-    public async Task<long> GetRequestCount()
+    public long GetRequestCount()
     {
-        return await Task.Run(() => httpRequestsDone);
+        return Interlocked.Read(ref httpRequestsDone);
     }
 
     public async Task PauseThread()

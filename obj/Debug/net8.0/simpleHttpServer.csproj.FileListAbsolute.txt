@@ -43,3 +43,15 @@ C:\Users\d7oom\desktop\simpleHttpServer\obj\Debug\net8.0\refint\simpleHttpServer
 C:\Users\d7oom\desktop\simpleHttpServer\obj\Debug\net8.0\simpleHttpServer.pdb
 C:\Users\d7oom\desktop\simpleHttpServer\obj\Debug\net8.0\simpleHttpServer.genruntimeconfig.cache
 C:\Users\d7oom\desktop\simpleHttpServer\obj\Debug\net8.0\ref\simpleHttpServer.dll
+D:\simpleHttpServer\bin\Debug\net8.0\ScottPlot.dll
+D:\simpleHttpServer\bin\Debug\net8.0\SkiaSharp.dll
+D:\simpleHttpServer\bin\Debug\net8.0\runtimes\linux-arm\native\libSkiaSharp.so
+D:\simpleHttpServer\bin\Debug\net8.0\runtimes\linux-arm64\native\libSkiaSharp.so
+D:\simpleHttpServer\bin\Debug\net8.0\runtimes\linux-musl-x64\native\libSkiaSharp.so
+D:\simpleHttpServer\bin\Debug\net8.0\runtimes\linux-x64\native\libSkiaSharp.so
+D:\simpleHttpServer\bin\Debug\net8.0\runtimes\osx\native\libSkiaSharp.dylib
+D:\simpleHttpServer\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
+D:\simpleHttpServer\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
+D:\simpleHttpServer\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
+D:\simpleHttpServer\obj\Debug\net8.0\simpleHttpServer.csproj.AssemblyReference.cache
+D:\simpleHttpServer\obj\Debug\net8.0\simpleHt.AB0DFC47.Up2Date
