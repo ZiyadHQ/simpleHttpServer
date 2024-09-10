@@ -1,4 +1,4 @@
-# simpleHttpServer
+# CS-Server
 C# based Http server that hosts an HTML webpage and serves API requests
 
 html files must have following format:
