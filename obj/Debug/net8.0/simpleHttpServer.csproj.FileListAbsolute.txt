@@ -55,3 +55,4 @@ D:\simpleHttpServer\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
 D:\simpleHttpServer\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
 D:\simpleHttpServer\obj\Debug\net8.0\simpleHttpServer.csproj.AssemblyReference.cache
 D:\simpleHttpServer\obj\Debug\net8.0\simpleHt.AB0DFC47.Up2Date
+d:\simpleHttpServer\bin\Debug\net8.0\Newtonsoft.Json.dll

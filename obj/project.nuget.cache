@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Z44YqebNl+Y=",
+  "dgSpecHash": "mcrSCcA63fU=",
   "success": true,
   "projectFilePath": "D:\\simpleHttpServer\\simpleHttpServer.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\zxzx-\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\zxzx-\\.nuget\\packages\\scottplot\\5.0.34\\scottplot.5.0.34.nupkg.sha512",
     "C:\\Users\\zxzx-\\.nuget\\packages\\skiasharp\\2.88.8\\skiasharp.2.88.8.nupkg.sha512",
     "C:\\Users\\zxzx-\\.nuget\\packages\\skiasharp.nativeassets.linux.nodependencies\\2.88.8\\skiasharp.nativeassets.linux.nodependencies.2.88.8.nupkg.sha512",

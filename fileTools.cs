@@ -20,16 +20,32 @@ public static class projectFileLoader
         pathToDirectory = fullPath;
     }
 
-    //recieves path relative to project root
+    /// <summary>
+    /// retrieve path relative to project root
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
     public static string pathToFile(string path)
     {
         return Path.Combine(pathToDirectory, path);
     }
 
-    //recieves path relative to project root, returns the text content of that file if found, else crashes thread
+    /// <summary>
+    /// recieves path relative to project root, returns the text content of that file if found, else crashes thread
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
     public static string getTextFromFile(string path)
     {
-        return File.ReadAllText(pathToFile(path));
+        try
+        {
+            return File.ReadAllText(pathToFile(path));
+        }
+        catch (System.Exception)
+        {
+            
+            return "<html><h1>404</h1><h2>page not found!</h2></html>";
+        }
     }
 
 }
@@ -38,7 +54,7 @@ public static class projectFileLoader
 public static class Formatter
 {
 
-    //function takes format parametrs: "@{targetString}" and source parameters: "{string to replace original string}"
+    ///function takes format parametrs: "@{targetString}" and source parameters: "{string to replace original string}"
     //e.g input = "{A} and {B}", parameters[] = ["@{A}", "@{B}", "ahmad", "khaled"], the input will become: "ahmad and khaled"
     //must include "@" at the start of the format string to differentate between it and non format strings
     public static void formatString(string input, string[] parameters)

@@ -1,11 +1,13 @@
-﻿using Tools;
+﻿using System.Text;
+using ScottPlot.Plottables;
+using Tools;
 
 namespace simpleHttpServer;
 
 public class HTMLCache
 {
 
-    Dictionary<string, string> Cache;
+    Dictionary<string, Byte[]> Cache;
     Dictionary<string, DateTime> expirationMap;
     
     //the time an entry is allowed to exist without being accessed
@@ -20,7 +22,7 @@ public class HTMLCache
         this.expirationTime = expirationTime;
         this.cleanUpInterval = cleanUpInterval;
         this.currentCleanUpInterval = cleanUpInterval;
-        Cache = new Dictionary<string, string>();
+        Cache = new Dictionary<string, Byte[]>();
         expirationMap = new Dictionary<string, DateTime>();
     }
 
@@ -35,7 +37,7 @@ public class HTMLCache
             }
     }
 
-    public void Add(String key, String value)
+    public void Add(String key, Byte[] value)
     {
         Cache[key] = value;
         expirationMap[key] = DateTime.Now.Add(expirationTime);
@@ -48,12 +50,25 @@ public class HTMLCache
     }
 
     //the key will be the processed html page request path
-    public String getHTML(string key)
+    public Byte[] getBytes(string key)
     {
-        string toReturn;
+        Byte[] toReturn;
         if(expirationMap.ContainsKey(key) == false)
         {
-            toReturn = projectFileLoader.getTextFromFile(key);
+            if(key.EndsWith(".html"))
+            {
+                String content = projectFileLoader.getTextFromFile(key);
+                toReturn = Encoding.UTF8.GetBytes(content);
+            }
+            else if(key.EndsWith(".jpg") || key.EndsWith(".jpeg") || key.EndsWith(".png")) 
+            {
+                    Byte[] bytes = File.ReadAllBytes(projectFileLoader.pathToFile(key));
+                    toReturn = bytes;
+            }
+            else
+            {
+                throw new Exception("couldn't store this file to cache");
+            }
             Add(key, toReturn);
         }else
         {
@@ -66,6 +81,5 @@ public class HTMLCache
         }
         return toReturn;
     }
-
 
 }

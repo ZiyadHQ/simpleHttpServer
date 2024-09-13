@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDL2 with Embedded WASM</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- This canvas element must exist with the ID 'canvas' for SDL2 to work properly -->
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script>
+        var Module = {
+            preRun: function() {
+                // Attach the canvas to the Module if needed
+                var canvas = document.getElementById('canvas');
+                Module['canvas'] = canvas;
+            },
+            onRuntimeInitialized: function() {
+                console.log('SDL2 and WebAssembly Initialized');
+            }
+        };
+    </script>
+
+    <!-- Load the compiled JavaScript with the embedded WASM -->
+    <script src="snakeGame.js"></script>
+    SNAKE GAME
+    <br>Controls:
+    <br>SPACE = pause/unpause
+    <br>Arrow keys = change direction
+</body>
+</html>
