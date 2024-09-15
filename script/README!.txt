@@ -1,0 +1,1 @@
+for some reason javascript files will request their respective .wasm files FROM ANOTHER SUBDIRECTORY CALLED "/script" TWICE FOR NO REASON!!!!

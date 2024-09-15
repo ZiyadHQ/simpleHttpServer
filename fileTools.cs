@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -125,6 +126,9 @@ public static class Formatter
 //tracks basics metrics of the server, allows for async requests and changes
 public class ServerMetricsTracker
 {
+    //tracks the total amount of bytes successfully sent
+    long bytesSent;
+
     //tracks the total amount of http requests done since the start of the server, can also be loaded from a file
     long httpRequestsDone;
 
@@ -137,19 +141,28 @@ public class ServerMetricsTracker
     //determines if the thread updater is runnig or not
     bool running = false;
 
-    public void run()
+    public void setInterval(int newInterval)
+    {
+        updateInterval = newInterval;
+    }
+
+    public async void run()
     {
         running = true;
         while(true)
         {
-
             while(running)
             {
-                //code for the update logic
+                String bytesPerRequest = (httpRequestsDone == 0)? "Na:Na": $"{(float)(bytesSent/httpRequestsDone)}";
+                Console.WriteLine($"Bytes Sent: {bytesSent} - Requests Processed: {httpRequestsDone} - Bytes Per Request: {bytesPerRequest}");
+                await Task.Delay(updateInterval);
             }
-
         }
+    }
 
+    public long addBytes(long Bytes)
+    {
+        return Interlocked.Add(ref bytesSent, Bytes);
     }
 
     public long IncrementRequestCountAsync()

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO.Compression;
+using System.Text;
 using ScottPlot.Plottables;
 using Tools;
 
@@ -7,9 +8,10 @@ namespace simpleHttpServer;
 public class HTMLCache
 {
 
+    Random random = new();
     Dictionary<string, Byte[]> Cache;
     Dictionary<string, DateTime> expirationMap;
-    
+
     //the time an entry is allowed to exist without being accessed
     TimeSpan expirationTime;
 
@@ -28,13 +30,13 @@ public class HTMLCache
 
     private void cleanUpExpiredEntries()
     {
-            foreach(var keyValuePair in expirationMap)
+        foreach (var keyValuePair in expirationMap)
+        {
+            if (keyValuePair.Value < DateTime.Now)
             {
-                if(keyValuePair.Value < DateTime.Now)
-                {
-                    Delete(keyValuePair.Key);
-                }
+                Delete(keyValuePair.Key);
             }
+        }
     }
 
     public void Add(String key, Byte[] value)
@@ -53,28 +55,24 @@ public class HTMLCache
     public Byte[] getBytes(string key)
     {
         Byte[] toReturn;
-        if(expirationMap.ContainsKey(key) == false)
+        if (expirationMap.ContainsKey(key) == false)
         {
-            if(key.EndsWith(".html"))
+            toReturn = File.ReadAllBytes(key);
+            using(MemoryStream memoryStream = new())
             {
-                String content = projectFileLoader.getTextFromFile(key);
-                toReturn = Encoding.UTF8.GetBytes(content);
-            }
-            else if(key.EndsWith(".jpg") || key.EndsWith(".jpeg") || key.EndsWith(".png")) 
-            {
-                    Byte[] bytes = File.ReadAllBytes(projectFileLoader.pathToFile(key));
-                    toReturn = bytes;
-            }
-            else
-            {
-                throw new Exception("couldn't store this file to cache");
+                using(GZipStream gZipStream = new(memoryStream, CompressionLevel.SmallestSize))
+                {
+                    gZipStream.Write(toReturn, 0, toReturn.Length);
+                }
+                toReturn = memoryStream.ToArray();
             }
             Add(key, toReturn);
-        }else
-        {
-            toReturn  = Cache[key];
         }
-        if(currentCleanUpInterval-- == 0)
+        else
+        {
+            toReturn = Cache[key];
+        }
+        if (currentCleanUpInterval-- == 0)
         {
             cleanUpExpiredEntries();
             currentCleanUpInterval = cleanUpInterval;
